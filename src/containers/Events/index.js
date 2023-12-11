@@ -1,7 +1,7 @@
 import { useState } from "react";
 import EventCard from "../../components/EventCard";
 import Select from "../../components/Select";
-import { useData } from "../../contexts/DataContext";
+import { useData } from "../../contexts/DataContext/index";
 import Modal from "../Modal";
 import ModalEvent from "../ModalEvent";
 
@@ -11,13 +11,15 @@ const PER_PAGE = 9;
 
 const EventList = () => {
   const { data, error } = useData();
-  const [type, setType] = useState();
+  const [type, setType] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const filteredEvents = ((!type ? data?.events : data?.events) || []).filter(
     (event, index) => {
       if (
-        (currentPage - 1) * PER_PAGE <= index &&
-        PER_PAGE * currentPage > index
+        event.type === type ||
+        (type === null &&
+          (currentPage - 1) * PER_PAGE <= index &&
+          PER_PAGE * currentPage > index)
       ) {
         return true;
       }

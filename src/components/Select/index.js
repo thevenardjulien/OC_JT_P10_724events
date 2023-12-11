@@ -13,10 +13,10 @@ const Select = ({
   label,
   type = "normal",
 }) => {
-  const [value, setValue] = useState();
+  const [value, setValue] = useState(null);
   const [collapsed, setCollapsed] = useState(true);
   const changeValue = (newValue) => {
-    onChange();
+    onChange(newValue);
     setValue(newValue);
     setCollapsed(newValue);
   };
@@ -36,14 +36,14 @@ const Select = ({
                   Toutes
                 </li>
               )}
-              {selection.map((s) => (
-                <li key={s} onClick={() => changeValue(s)}>
+              {selection.map((event) => (
+                <li key={event} onClick={() => changeValue(event)}>
                   <input
-                    defaultChecked={value === s}
+                    defaultChecked={value === event}
                     name="selected"
                     type="radio"
                   />{" "}
-                  {s}
+                  {event}
                 </li>
               ))}
             </>
@@ -88,7 +88,7 @@ Select.propTypes = {
   titleEmpty: PropTypes.bool,
   label: PropTypes.string,
   type: PropTypes.string,
-}
+};
 
 Select.defaultProps = {
   onChange: () => null,
@@ -96,6 +96,6 @@ Select.defaultProps = {
   label: "",
   type: "normal",
   name: "select",
-}
+};
 
 export default Select;
