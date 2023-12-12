@@ -6,12 +6,11 @@ import Button, { BUTTON_TYPES } from "../../components/Button";
 
 const mockContactApi = () =>
   new Promise((resolve) => {
-    setTimeout(resolve, 1000);
+    setTimeout(resolve, 200);
   });
 
 const Form = ({ onSuccess, onError }) => {
   const [sending, setSending] = useState(false);
-  const [sendResponse, setSendResponse] = useState(null);
   const sendContact = useCallback(
     async (evt) => {
       evt.preventDefault();
@@ -19,17 +18,11 @@ const Form = ({ onSuccess, onError }) => {
       // We try to call mockContactApi
       try {
         await mockContactApi();
-        setSendResponse("Votre message à bien été envoyé.");
-        setTimeout(() => {
-          setSendResponse(null);
-        }, 4000);
+        onSuccess();
         setSending(false);
       } catch (err) {
-        setSendResponse(
-          "Une erreur est survenue. Votre message n'a pas pu être envoyé."
-        );
-        setSending(false);
         onError(err);
+        setSending(false);
       }
     },
     [onSuccess, onError]
@@ -58,9 +51,6 @@ const Form = ({ onSuccess, onError }) => {
             label="Message"
             type={FIELD_TYPES.TEXTAREA}
           />
-          <div style={{ color: "white", textAlign: "Right" }}>
-            {sendResponse}
-          </div>
         </div>
       </div>
     </form>
