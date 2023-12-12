@@ -14,8 +14,10 @@ import Modal from "../../containers/Modal";
 
 const Page = () => {
   const { data } = useData();
-  const last = data && data.events ? data.events[data.events.length - 1] : null;
-
+  const byDateDesc = data?.events.sort((evtA, evtB) =>
+    new Date(evtA.date) < new Date(evtB.date) ? 1 : -1
+  );
+  const last = byDateDesc && byDateDesc.length > 0 ? byDateDesc[0] : null;
   return (
     <>
       <header>
