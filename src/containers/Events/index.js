@@ -13,8 +13,9 @@ const EventList = () => {
   const { data, error } = useData();
   const [type, setType] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const filteredEvents = ((!type ? data?.events : data?.events) || []).filter(
-    (event, index) => {
+
+  const filteredEvents = ((!type ? data?.events : data?.events) || [])
+    .filter((event, index) => {
       if (
         event.type === type ||
         (type === null &&
@@ -24,8 +25,8 @@ const EventList = () => {
         return true;
       }
       return false;
-    }
-  );
+    })
+    .slice(0, PER_PAGE);
 
   const changeType = (evtType) => {
     setCurrentPage(1);
