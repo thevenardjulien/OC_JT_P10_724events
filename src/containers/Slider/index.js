@@ -51,6 +51,9 @@ const Slider = () => {
               type="radio"
               name="radio-button"
               checked={index === radioIdx}
+              // onClick={() => {
+              //   setIndex(radioIdx);
+              // }}
               onChange={() => {}}
             />
           ))}
