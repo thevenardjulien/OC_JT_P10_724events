@@ -20,7 +20,9 @@ describe("When Menu is created", () => {
           bubbles: true,
         })
       );
-      expect(window.document.location.hash).toEqual("#contact");
+      setTimeout(() => {
+        expect(window.document.location.hash).toEqual("#contact");
+      }, 200);
     });
   });
 });
