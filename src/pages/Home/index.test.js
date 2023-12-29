@@ -29,23 +29,19 @@ describe("When Form is created", () => {
 describe("When a page is created", () => {
   it("a list of events is displayed", () => {
     render(<Home />);
-    setTimeout(() => {
-      screen.findByTestId("card-testid");
-    }, 200);
+    screen.findByTestId("card-testid");
   });
   it("a list a people is displayed", () => {
     render(<Home />);
-    setTimeout(() => {
-      screen.findByTestId("card-image-testid");
-    }, 200);
+    screen.findByTestId("card-image-testid");
   });
-  it("a footer is displayed", async () => {
+  it("a footer is displayed", () => {
     render(<Home />);
     const footerElement = screen.getByTestId("footer");
     expect(footerElement).toBeInTheDocument();
   });
-  it("an event card, with the last event, is displayed", async () => {
+  it("an event card, with the last event, is displayed", () => {
     render(<Home />);
-    await screen.findByText("Notre derniére prestation");
+    screen.findByText("Notre derniére prestation");
   });
 });

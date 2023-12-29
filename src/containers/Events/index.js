@@ -18,11 +18,7 @@ const EventList = () => {
       ? data?.events
       : data?.events.filter((event) => event.type === type)) || [];
 
-  const filteredEvents = (
-    (!type
-      ? data?.events
-      : data?.events.filter((event) => event.type === type)) || []
-  ).filter((event, index) => {
+  const filteredEvents = events.filter((event, index) => {
     if (
       (currentPage - 1) * PER_PAGE <= index &&
       PER_PAGE * currentPage > index

@@ -7,12 +7,12 @@ describe("Logo component", () => {
     render(<Menu />);
     expect(screen.getByTestId("Logo")).toBeInTheDocument();
   });
-  it("should be displayed in the footer when page is loaded", async () => {
+  it("should be displayed in the footer when page is loaded", () => {
     render(<Home />);
     const footerElement = screen.getByTestId("footer");
-    const logoElement = footerElement.querySelector("[data-testid='logo']");
-    setTimeout(() => {
-      expect(logoElement).toBeInTheDocument();
-    }, 200);
+    const logoElement = footerElement.querySelector("[data-testid='Logo']");
+    jest.useFakeTimers();
+    jest.advanceTimersByTime(2000);
+    expect(logoElement).toBeInTheDocument();
   });
 });
