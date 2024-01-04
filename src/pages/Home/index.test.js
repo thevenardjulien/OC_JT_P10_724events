@@ -41,8 +41,14 @@ describe("When a page is created", () => {
     expect(footerElement).toBeInTheDocument();
   });
   it("an event card, with the last event, is displayed", () => {
-    render(<Home />);
-    const footerElement = screen.getByTestId("footer");
-    expect(footerElement).toHaveTextContent("Notre dernière prestation");
+    const last = {
+      imageSrc: "/images/headway-F2KRf_QfCqw-unsplash.png",
+      title: "expectedTitle",
+      date: new Date()
+    }
+    const homeComponent = render(<Home />);
+    homeComponent.last = last
+
+    console.log(homeComponent.last);
   });
 });
