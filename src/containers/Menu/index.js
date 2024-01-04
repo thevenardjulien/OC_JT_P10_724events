@@ -19,9 +19,7 @@ const Menu = () => (
       </li>
     </ul>
     <a href="#contact">
-      <Button href="contact" title="contact">
-        Contact
-      </Button>
+      <Button>Contact</Button>
     </a>
   </nav>
 );

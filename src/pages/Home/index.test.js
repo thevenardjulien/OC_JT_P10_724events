@@ -42,6 +42,7 @@ describe("When a page is created", () => {
   });
   it("an event card, with the last event, is displayed", () => {
     render(<Home />);
-    screen.findByText("Notre derniére prestation");
+    const footerElement = screen.getByTestId("footer");
+    expect(footerElement).toHaveTextContent("Notre dernière prestation");
   });
 });
