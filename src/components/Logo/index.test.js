@@ -16,3 +16,6 @@ describe("Logo component", () => {
     expect(logoElement).toBeInTheDocument();
   });
 });
+
+
+

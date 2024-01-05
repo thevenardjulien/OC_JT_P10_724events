@@ -135,7 +135,7 @@ const Page = () => {
             />
           )}
         </div>
-        <div className="col contact" id="#contact">
+        <div className="col contact">
           <h3>Contactez-nous</h3>
           <address>45 avenue de la République, 75000 Paris</address>
           <div>01 23 45 67 89</div>
